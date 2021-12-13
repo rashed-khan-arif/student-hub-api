@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "729b88bc-74d1-44ae-8ee5-f257d6f84233": {
+      "ProjectGuid": "729b88bc-74d1-44ae-8ee5-f257d6f84233",
+      "DisplayName": "StudentHub.API",
+      "ColorIndex": 0
+    },
+    "b40c4972-6c8d-496f-a232-cd410c85556f": {
+      "ProjectGuid": "b40c4972-6c8d-496f-a232-cd410c85556f",
+      "DisplayName": "StudentHub.Models",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
