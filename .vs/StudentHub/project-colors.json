@@ -20,7 +20,12 @@
       "ProjectGuid": "6675a865-5f95-433f-bd6f-a945a8e84b7b",
       "DisplayName": "StudentHub.Repositories",
       "ColorIndex": 2
+    },
+    "65d9be37-6046-4958-ba87-15d4fddf6c2a": {
+      "ProjectGuid": "65d9be37-6046-4958-ba87-15d4fddf6c2a",
+      "DisplayName": "StuedentHub.API",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

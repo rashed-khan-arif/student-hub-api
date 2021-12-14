@@ -1,5 +1,6 @@
 ﻿using StudentHub.Repositories.Core;
 using Microsoft.EntityFrameworkCore;
+using EFCoreSecondLevelCacheInterceptor;
 
 namespace StudentHub.API.Extensions
 {
@@ -11,13 +12,14 @@ namespace StudentHub.API.Extensions
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
-               
-                //options.UseSqlServer(connectionString, (options) =>
-                //{
-                //    options.MigrationsAssembly("StudentHub.Repositories.Migrations");
-                //});
 
-                options.UseInMemoryDatabase("StudentHUB");
+                options.UseSqlServer(connectionString, (options) =>
+                {
+                    options.MigrationsAssembly("StudentHub.Repositories");
+                })
+                .EnableServiceProviderCaching(true)
+                .AddInterceptors(sp.GetRequiredService<SecondLevelCacheInterceptor>()); ;
+
             }, 32);
 
             return services;

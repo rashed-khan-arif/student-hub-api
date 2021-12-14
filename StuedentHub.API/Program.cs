@@ -1,23 +1,31 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
+using EFCoreSecondLevelCacheInterceptor;
 using StudentHub.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+var isDebug = true;
+#if !DEBUG
+            isDebug = false;
+#endif
+// For Identity  
+builder.Services.AddIdentity(builder.Configuration);
 
 builder.Services.AddControllers();
+builder.Services.AddEFSecondLevelCache(options =>
+            options.UseMemoryCacheProvider()
+                    .DisableLogging(!isDebug)
+        //.CacheAllQueries(CacheExpirationMode.Sliding, TimeSpan.FromHours(1))
+
+        // Please use the `CacheManager.Core` or `EasyCaching.Redis` for the Redis cache provider.
+        );
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDatabase();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddResponseCompression();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,9 +34,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StudentHub.API.Controllers.Common; 
+using StudentHub.API.Controllers.Common;
 using StudentHub.Models.Students;
 using StudentHub.Repositories.Core;
 
@@ -21,7 +21,9 @@ namespace StudentHub.API.Controllers.Students
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(new string[] { "value1", "value2" });
+            var can = _context.Database.CanConnect();
+
+            return Ok(new { connected = can });
         }
 
 
@@ -36,8 +38,8 @@ namespace StudentHub.API.Controllers.Students
         public async Task<IActionResult> Post([FromBody] string value)
         {
             var student = new Student { Id = 1, Name = "Rashed", PhoneNumber = 11111 };
-            _context.Students.Add(student);
-            await _context.SaveChangesAsync();
+           // _context.Students.Add(student);
+           // await _context.SaveChangesAsync();
             return Ok(student);
         }
 

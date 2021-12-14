@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj": {}
+    "E:\\Project\\RKSS\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj": {}
   },
   "projects": {
-    "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj": {
+    "E:\\Project\\RKSS\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj",
+        "projectUniqueName": "E:\\Project\\RKSS\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj",
         "projectName": "StudentHub.Models",
-        "projectPath": "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\student-hub-api\\StudentHub.Models\\obj\\",
+        "projectPath": "E:\\Project\\RKSS\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj",
+        "packagesPath": "C:\\Users\\arifk\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\RKSS\\StudentHub\\StudentHub.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arifk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/Xeon-Technology/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -44,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
