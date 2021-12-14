@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Personal\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj": {}
+    "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj": {}
   },
   "projects": {
-    "C:\\Personal\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj": {
+    "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj",
+        "projectUniqueName": "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj",
         "projectName": "StudentHub.Models",
-        "projectPath": "C:\\Personal\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj",
+        "projectPath": "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\StudentHub\\StudentHub.Models\\obj\\",
+        "outputPath": "C:\\Personal\\student-hub-api\\StudentHub.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

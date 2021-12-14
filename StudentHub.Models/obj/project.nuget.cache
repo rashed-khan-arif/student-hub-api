@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BYCU7jfxA3fXfisd9TRnLGVYGiq3tvzTqMlZ66NvLGTQopUt3hEyi2R+xCY9jD1OrhFZoU09NGgYJhvgPeEMCA==",
+  "dgSpecHash": "m3CYv1VivkUuwo3hlOT1aANyJTVjWw6ndUNdo59cTBcBXSM6XL1bz6Y6u8bVhG4Htp7cbt8jRBx3YJpf96Hzrw==",
   "success": true,
-  "projectFilePath": "C:\\Personal\\StudentHub\\StudentHub.Models\\StudentHub.Models.csproj",
+  "projectFilePath": "C:\\Personal\\student-hub-api\\StudentHub.Models\\StudentHub.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
