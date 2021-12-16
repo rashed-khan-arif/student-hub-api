@@ -33,7 +33,7 @@ namespace StuedentHub.API.Controllers.Authentication
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
-            
+
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await userManager.GetRolesAsync(user);
@@ -72,9 +72,13 @@ namespace StuedentHub.API.Controllers.Authentication
         [HttpPost("/register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var userExists = await userManager.FindByNameAsync(model.Username);
-            if (userExists != null)
-                return StatusCode(StatusCodes.Status400BadRequest, new SHResponse { Status = "Error", Message = "User already exists!" });
+            var userNameExists = await userManager.FindByNameAsync(model.Username);
+            if (userNameExists != null)
+                return StatusCode(StatusCodes.Status400BadRequest, new SHResponse { Status = "Error", Message = "Username already exists!" });
+
+            var emailExists = await userManager.FindByEmailAsync(model.Email);
+            if (emailExists != null)
+                return StatusCode(StatusCodes.Status400BadRequest, new SHResponse { Status = "Error", Message = "Email already exists!" });
 
             var user = new User()
             {
@@ -96,6 +100,13 @@ namespace StuedentHub.API.Controllers.Authentication
         }
 
 
+        [HttpGet("/token-validation")]
+        public async Task<IActionResult> ValidateToken([FromQuery] string token)
+        {
+            var isValidToken = await Task.FromResult(ValidateJwtToken(token));
+
+            return Ok($"Your token is: {isValidToken}");
+        }
 
         private (string, DateTime) GenerateToken(IEnumerable<Claim> claims)
         {
@@ -122,6 +133,35 @@ namespace StuedentHub.API.Controllers.Authentication
             }
 
             return Convert.ToBase64String(randNum);
+        }
+
+        private bool ValidateJwtToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]);
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                var jwtToken = (JwtSecurityToken)validatedToken;
+                //var accountId = int.Parse(jwtToken.Claims.First(x => x.Type == "sub").Value);
+
+                // return account id from JWT token if validation successful
+                return true;
+            }
+            catch
+            {
+                // return null if validation fails
+                return false;
+            }
         }
     }
 }

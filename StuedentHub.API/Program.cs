@@ -10,7 +10,12 @@ var isDebug = true;
 // For Identity  
 builder.Services.AddIdentity(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    });
+
 builder.Services.AddEFSecondLevelCache(options =>
             options.UseMemoryCacheProvider()
                     .DisableLogging(!isDebug)
@@ -21,7 +26,10 @@ builder.Services.AddEFSecondLevelCache(options =>
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDatabase();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Protected API", Version = "v1" });
+});
 builder.Services.AddResponseCompression();
 
 var app = builder.Build();

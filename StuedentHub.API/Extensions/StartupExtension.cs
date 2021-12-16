@@ -12,9 +12,13 @@ namespace StudentHub.API.Extensions
         public static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddIdentity<User, Role>()
-                    .AddEntityFrameworkStores<StudentHUBDbContext>()
-                    .AddDefaultTokenProviders();
+            services.AddIdentity<User, Role>(options =>
+            {              
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.MaxFailedAccessAttempts = 10;           
+            })
+              .AddEntityFrameworkStores<StudentHUBDbContext>()
+              .AddDefaultTokenProviders();
 
             var key = Encoding.UTF8.GetBytes(configuration["JWT:Secret"]);
             var sighingkey = new SymmetricSecurityKey(key);
