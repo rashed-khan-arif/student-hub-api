@@ -28,7 +28,7 @@ builder.Services.AddDatabase();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Protected API", Version = "v1" });
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Student HUB API", Version = "v1" });
 });
 builder.Services.AddResponseCompression();
 

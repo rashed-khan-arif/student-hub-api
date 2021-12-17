@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query; 
+using Microsoft.EntityFrameworkCore.Query;
 using System.Threading;
-using StudentHub.Repositories.Repo.Interfaces; 
+using StudentHub.Repositories.Repo.Interfaces;
 using StudentHub.Models.Common;
-using EFCoreSecondLevelCacheInterceptor; 
+using EFCoreSecondLevelCacheInterceptor;
+using System.Linq.Expressions;
 
 namespace StudentHub.Repositories.Repo
 {
@@ -76,7 +76,7 @@ namespace StudentHub.Repositories.Repo
         {
             if (Query.TryGetTarget(out var q))
             {
-                Query.SetTarget(q.Cacheable(CacheExpirationMode.Sliding, timeToLive, new EFCacheDebugInfo { IsCacheHit = true }));
+                Query.SetTarget(q.Cacheable(CacheExpirationMode.Sliding, timeToLive));
             }
             return this;
         }
@@ -134,15 +134,17 @@ namespace StudentHub.Repositories.Repo
         }
         public IBaseQueryable<TModel> OrderBy(bool @ascending = true, params string[] properties)
         {
-            if (Query.TryGetTarget(out var q))
-            {
-                Query.SetTarget(q.OrderBy(properties.Select(a => new SortModel
-                {
-                    PropertyName = a,
-                    Sort = ascending ? "asc" : "desc"
-                })));
-                return this;
-            }
+            /**
+             if (Query.TryGetTarget(out var q))
+             {       
+                 Query.SetTarget(q?.OrderBy(properties.Select(a => new SortModel
+                 {
+                     PropertyName = a,
+                     Sort = ascending ? "asc" : "desc"
+                 })));
+                 return this;
+             }
+            */
             throw new InvalidOperationException();
         }
 
@@ -158,7 +160,6 @@ namespace StudentHub.Repositories.Repo
 
         public async Task<IList<TModel>> ToListAsync()
         {
-            Console.WriteLine("Country list...");
             if (Query.TryGetTarget(out var q))
             {
                 var result = await q.AsNoTracking().ToListAsync();
@@ -221,6 +222,8 @@ namespace StudentHub.Repositories.Repo
             var count = await CountAsync();
             //Query.TryGetTarget(out q);
 
+
+            /**
             if (!string.IsNullOrEmpty(primaryKey))
             {
                 q = q.OrderBy(new List<SortModel>
@@ -234,7 +237,8 @@ namespace StudentHub.Repositories.Repo
 
 
             }
-            
+            */
+
             q = q.Skip((page - 1) * pageSize).Take(pageSize);
 
             var paged = new PagedList<TModel>

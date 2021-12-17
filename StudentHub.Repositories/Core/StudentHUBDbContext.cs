@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StudentHub.Models;
 using StudentHub.Models.Auth;
-using StudentHub.Models.Students;
+using StudentHub.Models.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;

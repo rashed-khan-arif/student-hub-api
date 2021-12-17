@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentHub.API.Controllers.Common;
-using StudentHub.Models.Students;
+using StudentHub.Models.Student;
 using StudentHub.Repositories.Core;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,7 +37,7 @@ namespace StudentHub.API.Controllers.Students
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string value)
         {
-            var student = new Student { Id = 1, Name = "Rashed", PhoneNumber = 11111 };
+            var student = new Student { Id = 1};
            // _context.Students.Add(student);
            // await _context.SaveChangesAsync();
             return Ok(student);
