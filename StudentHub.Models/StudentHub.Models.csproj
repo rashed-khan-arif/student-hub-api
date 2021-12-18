@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AssetExchange\" />
-    <Folder Include="Game\" />
-    <Folder Include="Tutoring\" />
-    <Folder Include="Wallet\" />
+    <Folder Include="Purchase\" />
   </ItemGroup>
 
 </Project>

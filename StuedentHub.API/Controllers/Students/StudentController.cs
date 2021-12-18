@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentHub.API.Controllers.Common;
-using StudentHub.Models.Student;
+using StudentHub.Models.Students;
 using StudentHub.Repositories.Core;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
