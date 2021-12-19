@@ -9,6 +9,8 @@ namespace StudentHub.Models.Students
         public string PhotoUrl { get; set; }
         public ImageType Type { get; set; }
         public bool Active { get; set; }
+        public DateTime CreateDate { get; set; }
+        public virtual Student Student { get; set; }
     }
 
 }

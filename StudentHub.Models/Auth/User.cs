@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using StudentHub.Models.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace StudentHub.Models.Auth
 {
-    public class User: IdentityUser<int>
+    public class User : IdentityUser<int>
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -18,5 +19,8 @@ namespace StudentHub.Models.Auth
         public string? Password { get; set; }
         public string? RoleName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public virtual Student Student { get; set; }
+
+        public virtual ICollection<UserRefreshToken> UserRefreshTokens { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿ using StudentHub.Models.Enum;
+﻿using StudentHub.Models.Common;
+using StudentHub.Models.Enum;
+using StudentHub.Models.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,9 @@ namespace StudentHub.Models.Network
         public InstitutionManagementType ManagementType { get; set; }
         public int EIIN { get; set; }
         public string ManagementName { get; set; }
+        public DateTime CreateDate { get; set; }
+        public virtual TheHub Hub { get; set; }
+        public virtual ICollection<StudentInstitution> StudentIntitutions { get; set; }
     }
 }
   

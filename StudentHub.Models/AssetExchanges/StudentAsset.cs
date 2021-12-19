@@ -1,4 +1,6 @@
-﻿using StudentHub.Models.Enum;
+﻿using StudentHub.Models.Auth;
+using StudentHub.Models.Enum;
+using StudentHub.Models.Purchase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +22,8 @@ namespace StudentHub.Models.AssetExchanges
         public bool IsUsed { get; set; }        
         //Ex. 36 days
         public int UsedDuration { get; set; }
+        public DateTime CreateDate { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<PurchaseItem> PurchaseItems { get; set; }
     }
 }

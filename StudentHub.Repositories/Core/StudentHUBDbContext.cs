@@ -20,12 +20,7 @@ namespace StudentHub.Repositories.Core
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-            builder.Entity<User>().ToTable("Users");
-            builder.Entity<UserClaim>().ToTable("UserClaims");
-            builder.Entity<UserLogin>().ToTable("UserLogins");
-            builder.Entity<UserRefreshToken>().ToTable("UserRefreshTokens");
-            builder.Entity<UserRole>().ToTable("UserRoles"); 
+            base.OnModelCreating(builder);     
             builder.Entity<UserToken>().ToTable("UserTokens");
             builder.Entity<Role>().ToTable("Roles");
             builder.Entity<RoleClaim>().ToTable("RoleClaims");

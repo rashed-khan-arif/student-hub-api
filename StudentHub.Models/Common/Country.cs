@@ -30,11 +30,5 @@ namespace StudentHub.Models.Common
 
     }
 
-    public class TheHub
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int DistrictId { get; set; }
-        public bool Active { get; set; }
-    }
+   
 }

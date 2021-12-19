@@ -13,5 +13,6 @@ namespace StudentHub.Models.AssetExchanges
         public string ImageTitle { get; set; }
         public int ImageUrl { get; set; }
         public bool Active { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
