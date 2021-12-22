@@ -27,9 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configs\Purchase\" />
-    <Folder Include="Configs\Wallet\" />
-    <Folder Include="Configs\Student\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

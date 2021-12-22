@@ -20,7 +20,7 @@ namespace StudentHub.Models.Network
         public string ManagementName { get; set; }
         public DateTime CreateDate { get; set; }
         public virtual TheHub Hub { get; set; }
-        public virtual ICollection<StudentInstitution> StudentIntitutions { get; set; }
+        public virtual ICollection<StudentInstitution> StudentInstitutions { get; set; }
     }
 }
   

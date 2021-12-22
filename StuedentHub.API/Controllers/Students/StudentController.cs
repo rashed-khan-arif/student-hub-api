@@ -43,16 +43,5 @@ namespace StudentHub.API.Controllers.Students
             return Ok(student);
         }
 
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

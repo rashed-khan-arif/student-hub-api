@@ -8,9 +8,11 @@ namespace StudentHub.Models.Enum
 {
     public enum AssetType
     {
-        Free = 0,
-        Paid = 1
-    } 
+        Buy = 0,
+        WantedFree = 1,
+        Donation = 2,
+        Sell = 3
+    }
 
     public enum AssetCategory
     {

@@ -19,5 +19,6 @@ namespace StudentHub.Models.Payment
         public DateTime PaymentDate { get; set; }
         public virtual AssetPurchase AssetPurchase { get; set; }
         public virtual User PaymentUser { get; set; }
+
     }
 }

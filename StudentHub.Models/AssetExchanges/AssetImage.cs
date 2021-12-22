@@ -14,5 +14,6 @@ namespace StudentHub.Models.AssetExchanges
         public int ImageUrl { get; set; }
         public bool Active { get; set; }
         public DateTime CreateDate { get; set; }
+        public virtual StudentAsset Asset { get; set; }
     }
 }

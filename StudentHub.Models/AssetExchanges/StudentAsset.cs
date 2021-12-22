@@ -25,5 +25,6 @@ namespace StudentHub.Models.AssetExchanges
         public DateTime CreateDate { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<PurchaseItem> PurchaseItems { get; set; }
+        public virtual ICollection<AssetImage> AssetImages { get; set; }
     }
 }

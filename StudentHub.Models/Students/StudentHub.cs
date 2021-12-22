@@ -3,7 +3,7 @@ using StudentHub.Models.Network;
 
 namespace StudentHub.Models.Students
 {
-    public class StudentHub
+    public class StudentHubModel
     {
         public int Id { get; set; }
         public int StudentId { get; set; }

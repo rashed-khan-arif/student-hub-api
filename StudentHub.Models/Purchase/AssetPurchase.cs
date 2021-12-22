@@ -1,4 +1,5 @@
 ﻿using StudentHub.Models.Auth;
+using StudentHub.Models.Payment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace StudentHub.Models.Purchase
         public DateTime PurchaseDate { get; set; } 
         public virtual User User { get; set; }
         public virtual ICollection<PurchaseItem> PurchaseItems { get; set; }
+        public virtual ICollection<AssetPayment> AssetPayments { get; set; }
     }
 }

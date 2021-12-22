@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization; 
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StudentHub.Models.Auth;
@@ -18,12 +18,12 @@ namespace StudentHub.Repositories.Configs
             builder.Property(a => a.HubId).IsRequired();
             builder.Property(a => a.ManagementName);
             builder.Property(a => a.ManagementType);
-            builder.Property(a => a.EIIN).IsRequired();            
-            builder.Property(a => a.InstitutionType).IsRequired();            
+            builder.Property(a => a.EIIN).IsRequired();
+            builder.Property(a => a.InstitutionType).IsRequired();
             builder.Property(a => a.Name).IsRequired();
-            builder.Property(a => a.CreateDate).IsCreateDate().IsRequired();       
-            builder.HasOne(a => a.Hub).WithMany(x=>x.Institutions).HasForeignKey(x=>x.HubId);      
-           
+            builder.Property(a => a.CreateDate).IsCreateDate().IsRequired();
+            builder.HasOne(a => a.Hub).WithMany(x => x.Institutions).OnDelete(DeleteBehavior.Restrict).HasForeignKey(x => x.HubId);
+
         }
     }
 }

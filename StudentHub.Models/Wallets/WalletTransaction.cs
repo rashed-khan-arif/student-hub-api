@@ -11,6 +11,7 @@ namespace StudentHub.Models.Wallets
         public TrxType TrxType { get; set; }
         public DateTime TrxDate { get; set; }
         public int FromUserId { get; set; }
+        public bool Active { get; set; }
         public string Notes { get; set; }
         public virtual Wallet Wallet { get; set; }
         public virtual User FromUser { get; set; }

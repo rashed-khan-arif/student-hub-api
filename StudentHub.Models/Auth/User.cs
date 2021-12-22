@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using StudentHub.Models.AssetExchanges;
+using StudentHub.Models.Payment;
+using StudentHub.Models.Purchase;
 using StudentHub.Models.Students;
+using StudentHub.Models.Wallets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +24,11 @@ namespace StudentHub.Models.Auth
         public string? RoleName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
         public virtual Student Student { get; set; }
-
         public virtual ICollection<UserRefreshToken> UserRefreshTokens { get; set; }
+        public virtual ICollection<AssetPurchase> AssetPurchases { get; set; }
+        public virtual ICollection<AssetPayment> AssetPayments { get; set; }
+        public virtual ICollection<StudentAsset> StudentAssets { get; set; }
+        public virtual ICollection<Wallet> Wallets { get; set; }
+        public virtual ICollection<WalletTransaction> Transactions { get; set; }
     }
 }

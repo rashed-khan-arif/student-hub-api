@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudentHub.Models.Network;
+using StudentHub.Models.Students;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +29,8 @@ namespace StudentHub.Models.Common
         public int Id { get; set; }
         public string Name { get; set; }
         public int CityId { get; set; }
-
+        public virtual ICollection<TheHub> Hubs { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 
    
