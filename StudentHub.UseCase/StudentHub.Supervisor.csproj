@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentHub.Models\StudentHub.Models.csproj" />
+    <ProjectReference Include="..\StudentHub.Repositories\StudentHub.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

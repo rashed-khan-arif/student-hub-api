@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup> 
+	  <PackageReference Include="AutoMapper" Version="10.1.1" /> 
 	  <PackageReference Include="EFCoreSecondLevelCacheInterceptor" Version="3.2.4" /> 
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.0" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\StudentHub.Models\StudentHub.Models.csproj" />
     <ProjectReference Include="..\StudentHub.Repositories\StudentHub.Repositories.csproj" />
+    <ProjectReference Include="..\StudentHub.UseCase\StudentHub.Supervisor.csproj" />
   </ItemGroup>
 
 </Project>

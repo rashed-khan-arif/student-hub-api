@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using StudentHub.Models.Auth;
 using StudentHub.Models.Students;
 using StudentHub.Repositories.Extensions;
 using System;
@@ -22,6 +23,7 @@ namespace StudentHub.Repositories.Configs.Students
             builder.Property(a => a.DistrictId);
             builder.Property(a => a.CreateDate).IsCreateDate().IsRequired();
             builder.HasOne(a => a.District).WithMany(x => x.Students).OnDelete(DeleteBehavior.Restrict).HasForeignKey(x => x.DistrictId);
+            builder.HasOne(a => a.User).WithOne(x => x.Student).OnDelete(DeleteBehavior.Restrict).HasForeignKey<Student>(x => x.UserId);
         }
     }
 }

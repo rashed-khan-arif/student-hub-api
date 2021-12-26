@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using StudentHub.Models.Auth;
 using StudentHub.Repositories.Core;
+using StudentHub.Repositories.Repo;
+using StudentHub.Repositories.Repo.Interfaces;
+using StudentHub.Supervisor.Impl;
+using StudentHub.Supervisor.Interfaces;
 using System.Text;
 
 namespace StudentHub.API.Extensions
@@ -13,9 +17,9 @@ namespace StudentHub.API.Extensions
         {
 
             services.AddIdentity<User, Role>(options =>
-            {              
+            {
                 options.User.RequireUniqueEmail = true;
-                options.Lockout.MaxFailedAccessAttempts = 10;           
+                options.Lockout.MaxFailedAccessAttempts = 10;
             })
               .AddEntityFrameworkStores<StudentHUBDbContext>()
               .AddDefaultTokenProviders();
@@ -43,6 +47,15 @@ namespace StudentHub.API.Extensions
                      IssuerSigningKey = sighingkey
                  };
              });
+
+            return services;
+        }
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+
+            services
+                .AddScoped(typeof(IStHubRepository<>), typeof(StHubRepository<>))
+                .AddScoped<IStudentService, StudentService>();
 
             return services;
         }

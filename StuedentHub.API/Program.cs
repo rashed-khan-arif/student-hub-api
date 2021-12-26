@@ -1,5 +1,8 @@
 using EFCoreSecondLevelCacheInterceptor;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 using StudentHub.API.Extensions;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +13,14 @@ var isDebug = true;
 // For Identity  
 builder.Services.AddIdentity(builder.Configuration);
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true)
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
+
+builder.Services.AddMvc();
 
 builder.Services.AddEFSecondLevelCache(options =>
             options.UseMemoryCacheProvider()
@@ -25,10 +31,27 @@ builder.Services.AddEFSecondLevelCache(options =>
         );
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDatabase();
+builder.Services.AddRepositories();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Student HUB API", Version = "v1" });
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Student HUB API",
+        Version = "v1",
+        License = new OpenApiLicense
+        {
+            Name = "Student HUB",
+            Url = new Uri("https://student-hub.com")
+        },
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "Rashed Khan",
+            Email = "student.hub.bangladesh@gmail.com",
+            Url = new Uri("https://rashedkhan.com/")
+        },
+        Description = "Student HUB Documentation"
+    }); ;
 });
 builder.Services.AddResponseCompression();
 

@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHub.Models", "Studen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHub.Repositories", "StudentHub.Repositories\StudentHub.Repositories.csproj", "{6675A865-5F95-433F-BD6F-A945A8E84B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuedentHub.API", "StuedentHub.API\StuedentHub.API.csproj", "{65D9BE37-6046-4958-BA87-15D4FDDF6C2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StuedentHub.API", "StuedentHub.API\StuedentHub.API.csproj", "{65D9BE37-6046-4958-BA87-15D4FDDF6C2A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6675A865-5F95-433F-BD6F-A945A8E84B7B} = {6675A865-5F95-433F-BD6F-A945A8E84B7B}
 		{B40C4972-6C8D-496F-A232-CD410C85556F} = {B40C4972-6C8D-496F-A232-CD410C85556F}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHub.Supervisor", "StudentHub.UseCase\StudentHub.Supervisor.csproj", "{D5960FEC-A514-4E33-91EA-8602EA52B1B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{65D9BE37-6046-4958-BA87-15D4FDDF6C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D9BE37-6046-4958-BA87-15D4FDDF6C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D9BE37-6046-4958-BA87-15D4FDDF6C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5960FEC-A514-4E33-91EA-8602EA52B1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5960FEC-A514-4E33-91EA-8602EA52B1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5960FEC-A514-4E33-91EA-8602EA52B1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5960FEC-A514-4E33-91EA-8602EA52B1B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

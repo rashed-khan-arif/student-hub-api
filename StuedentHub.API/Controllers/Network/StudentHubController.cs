@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentHub.API.Controllers.Common;
 using StudentHub.Models.Students;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace StuedentHub.API.Controllers.Students
+namespace StuedentHub.API.Controllers.Network
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentHubController : BaseApiController

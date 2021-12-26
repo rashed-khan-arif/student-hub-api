@@ -1,47 +1,52 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentHub.API.Controllers.Common;
+using StudentHub.Models.Common;
 using StudentHub.Models.Students;
 using StudentHub.Repositories.Core;
+using StudentHub.Supervisor.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace StudentHub.API.Controllers.Students
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : BaseApiController
     {
-        private readonly StudentHUBDbContext _context;
+        private readonly IStudentService _service;
 
-        public StudentController(StudentHUBDbContext context)
+        public StudentController(IStudentService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var can = _context.Database.CanConnect();
+            var all = await _service.GetAll();
 
-            return Ok(new { connected = can });
+            return Ok(all);
         }
 
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var response = await _service.Get(id);
+            if (response == null) return NotFound();
+            return Ok(response.Convert());
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] string value)
+        [HttpPost("create-profile")]
+        public async Task<IActionResult> Post([FromBody] Student body)
         {
-            var student = new Student { Id = 1};
-           // _context.Students.Add(student);
-           // await _context.SaveChangesAsync();
-            return Ok(student);
+            var result = await _service.Insert(body);
+            if (result == null) return BadRequest();
+            return Created("/",body);
+           
         }
-
     }
 }
